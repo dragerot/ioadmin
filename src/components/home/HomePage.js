@@ -7,7 +7,7 @@ class HomePage extends React.Component {
       <div className="jumbotron">
         <h1>IoT Demo</h1>
         <p>List of events</p>
-        <Link to="about" className="btn btn-primary btn-lg">Learn more</Link>
+        <Link to="about" className="btn btn-info">About</Link>
       </div>
     );
   }
