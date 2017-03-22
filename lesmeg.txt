@@ -1,0 +1,6 @@
+Kjøre som docker
+
+git clone https://github.com/dragerot/ioadmin.git
+npm install (trengte ikke å gjør dette)
+sudo docker build -t ioadmin .
+sudo docker run -d -p 3001:3000 ioadmin
