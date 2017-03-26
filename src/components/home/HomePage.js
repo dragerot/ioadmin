@@ -25,30 +25,56 @@ class HomePage extends React.Component {
     this.state = { items: [] };
   }
 
-  componentDidMount() {
-    fetch(`http://62.122.255.244:8080/ehelse/melding/hentalleasc`,{
-      mode: 'no-cors'
-    }).then(result=> {
-      console.log('***********result************************');
-      console.log(result);
-      if(result.Response){
-        console.log('*********body **************************');
-        this.setState(
-          {
-            items: result.json()
-          }
-        );
-      }else {
-        console.log('*********json null**************************');
-        console.log("Ikke funnet noe");
-        this.setState(
-          {
-            items: products
-          }
-        );
+  componentDidMount()
+  { //  mode: 'no-cors',
+    //fetch(`http://pro.toregard.net/ehelse/melding/hentalleasc`,
+    fetch(`http://services.groupkt.com/country/get/all`,
+      {
+
+        method: 'GET',
+        headers: {
+          Accept: 'application/json'
+        }
       }
+    ).then(
+      // response => {
+      //   if (response.ok) {
+      //
+      //     response.json().then(json => {
+      //       this.setState(
+      //         {
+      //           items: response
+      //         });
+      //
+      //     });
+      //   }else {
+      //     console.log('*************IKKE OK');
+      //     console.log(response);
+      //   }
+      // }
+      function(response)
+      {
+        console.log('*************');
+        // console.log(response);
+        // console.log('*************111111');
+        var item =response.json().then(
+             function(data){
+            }
+        );
+        console.log('*************2');
+        item.then(
+          function(d){
+            console.log('ddddd');
+            console.log(d);
+          }
+        );
+        console.log(item);
 
-
+      }
+  ).catch(function(err) {
+     console.log('*************Feiler');
+     console.log(err);
+      // Error :(
     });
   }
 

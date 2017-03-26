@@ -81,5 +81,5 @@ export default function DataHendelse() {
          "typeHendelse": "helpButton"
        }
      ]
-   )
+   );
 }
