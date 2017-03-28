@@ -33,7 +33,7 @@ class ItemLister extends React.Component {
         <p>List of IoT events</p>
         <BootstrapTable data={this.props.items}>
           <TableHeaderColumn dataField="id" isKey={true}>Id</TableHeaderColumn>
-           <TableHeaderColumn dataField="messages">messages</TableHeaderColumn>
+           <TableHeaderColumn dataField="dato">messages</TableHeaderColumn>
         </BootstrapTable>
       </div>
     );

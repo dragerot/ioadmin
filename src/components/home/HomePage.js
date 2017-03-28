@@ -1,5 +1,6 @@
 import React from 'react';
 import ItemLister from './ItemLister';
+import axios from 'axios';
 
 const products = [];
 
@@ -26,9 +27,9 @@ class HomePage extends React.Component {
   }
 
   componentDidMount()
-  { //  mode: 'no-cors',
-    //fetch(`http://pro.toregard.net/ehelse/melding/hentalleasc`,
-    fetch(`http://services.groupkt.com/country/get/all`,
+  {
+    var svar = [];
+    fetch(`http://localhost:8080/ehelse/melding/hentalleasc`,
       {
 
         method: 'GET',
@@ -37,46 +38,25 @@ class HomePage extends React.Component {
         }
       }
     ).then(
-      // response => {
-      //   if (response.ok) {
-      //
-      //     response.json().then(json => {
-      //       this.setState(
-      //         {
-      //           items: response
-      //         });
-      //
-      //     });
-      //   }else {
-      //     console.log('*************IKKE OK');
-      //     console.log(response);
-      //   }
-      // }
-      function(response)
+     function(response)
       {
-        console.log('*************');
-        // console.log(response);
-        // console.log('*************111111');
-        var item =response.json().then(
-             function(data){
-            }
+        console.log('****SJEKK RES*********');
+        console.log(response);
+         response.json().then(
+              function(data)
+             {
+               svar.push(data);
+             }
         );
-        console.log('*************2');
-        item.then(
-          function(d){
-            console.log('ddddd');
-            console.log(d);
-          }
-        );
-        console.log(item);
-
       }
-  ).catch(function(err) {
+    ).catch(function(err) {
      console.log('*************Feiler');
      console.log(err);
       // Error :(
     });
-  }
+    //this.setState({ items: svar });
+    this.state.items=svar;
+    }
 
   render(){
     return (
@@ -88,3 +68,24 @@ class HomePage extends React.Component {
   }
 }
 export default HomePage;
+
+//  mode: 'no-cors',
+//http://localhost:8080/ehelse/melding/hentalleasc
+// fetch(`http://toregard.net:8080/ehelse/melding/hentalleasc`,
+// mode: 'no-cors',
+
+// response => {
+//   if (response.ok) {
+//     console.log("OK");
+//     response.json().then(json => {
+//       this.setState(
+//         {
+//           items: response
+//         });
+//
+//     });
+//   }else {
+//     console.log('*************IKKE OK');
+//     console.log(response);
+//   }
+// }
